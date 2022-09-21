@@ -38,10 +38,10 @@ program
     .command("createTf")
     .argument("<tokenAddress>", "address of token")
     .argument("<amount>", "amount (ether) of token to slice", myParseFloat)
-    .argument("[sliceTime]", "timestamp of slice in seconds", myParseInt, 1672531199)
     .argument("[gasPrice]", "gas price in gwei", myParseFloat, 2)
+    .argument("[sliceTime]", "timestamp of slice in seconds", myParseInt, 1672531199)
     .description("Create a Time Frame of a given token")
-    .action(async (tokenAddress, amount, sliceTime, gasPrice) => {
+    .action(async (tokenAddress, amount, gasPrice, sliceTime) => {
         const sliceDate = new Date(sliceTime*1000)
         console.log(`\nCreating a TF of ${ tokenAddress }, adding amount ${ amount }, slice date ${ sliceDate }, gas price ${ gasPrice } gwei.\n\n`)
 
