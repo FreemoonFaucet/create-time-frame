@@ -43,8 +43,8 @@ program
     .argument("[gasPrice]", "gas price in gwei", myParseInt, 2)
     .description("Create a Time Frame of a given token")
     .action(async (tokenAddress, amount, sliceTime, gasPrice) => {
-        const sliceTime = new Date(sliceTime*1000)
-        console.log(`Creating a TF of ${ tokenAddress }, adding amount ${ amount }, slice time ${ sliceTime }, gas price ${ gasPrice } gwei.")
+        const sliceDate = new Date(sliceTime*1000)
+        console.log(`Creating a TF of ${ tokenAddress }, adding amount ${ amount }, slice time ${ sliceDate }, gas price ${ gasPrice } gwei.")
 
         const provider = getProvider()
         const signer = getSigner(provider)
@@ -53,8 +53,8 @@ program
         const gasPriceWei = ether.utils.parseUnits(gasPrice, "gwei")
         const token = new ethers.Contract(tokenAddress, frc759Abi)
 
-        console.log(ethers.utils.formatUnits(amountWei, "ether")
-        console.log(ethers.utils.formatUnits(gasPriceWei, "gwei")
+        console.log(ethers.utils.formatUnits(amountWei, "ether"))
+        console.log(ethers.utils.formatUnits(gasPriceWei, "gwei"))
 
         try {
             // await token.sliceByTime(amountWei, sliceTime)
@@ -62,21 +62,3 @@ program
             console.log(err.message)
         }
     })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
