@@ -1,4 +1,3 @@
-
 const commander = require("commander")
 const dotenv = require("dotenv")
 const { ethers } = require("ethers")
@@ -39,7 +38,7 @@ program
     .command("createTf")
     .argument("<tokenAddress>", "address of token")
     .argument("<amount>", "amount (ether) of token to slice", myParseFloat)
-    .argument("<sliceTime>", "timestamp of slice in seconds", myParseInt)
+    .argument("[sliceTime]", "timestamp of slice in seconds", myParseInt, 1672531199)
     .argument("[gasPrice]", "gas price in gwei", myParseFloat, 2)
     .description("Create a Time Frame of a given token")
     .action(async (tokenAddress, amount, sliceTime, gasPrice) => {
@@ -69,7 +68,7 @@ program
 program
     .command("getTf")
     .argument("<tokenAddress>", "address of token")
-    .argument("<sliceTime>", "timestamp of slice in seconds", myParseInt)
+    .argument("[sliceTime]", "timestamp of slice in seconds", myParseInt, 1672531199)
     .description("Get a time frame address of a token")
     .action(async (tokenAddress, sliceTime) => {
         console.log(`\nGetting front/back end slices for token ${ tokenAddress }, timestamp ${ sliceTime } ...`)
@@ -82,7 +81,7 @@ program
 
         console.log(`\nFront end: ${ frontEndSlice }\nBack end: ${ backEndSlice }`)
     })
-    
+ 
 
 dotenv.config()
 program.parse(process.argv)
