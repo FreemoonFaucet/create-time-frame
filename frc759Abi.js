@@ -1,4 +1,5 @@
-export default const frc759Abi = [
+module.exports = {
+  frc759Abi: [
   {
     "inputs": [
       {
@@ -582,3 +583,4 @@ export default const frc759Abi = [
     "type": "function"
   }
 ]
+}
