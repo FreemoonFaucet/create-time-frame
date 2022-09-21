@@ -52,13 +52,13 @@ program
         const gasPriceWei = ethers.utils.parseUnits(String(gasPrice), "gwei")
         const token = new ethers.Contract(tokenAddress, frc759Abi, signer)
 
-        console.log(ethers.utils.formatUnits(amountWei, "ether"))
-        console.log(ethers.utils.formatUnits(gasPriceWei, "gwei"))
+        // console.log(ethers.utils.formatUnits(amountWei, "ether"))
+        // console.log(ethers.utils.formatUnits(gasPriceWei, "gwei"))
 
         try {
             const receipt = await token.sliceByTime(amountWei, sliceTime)
-            const result = await receipt.wait()
-            console.log(result)
+            await receipt.wait()
+            console.log("\nSuccess.")
         } catch(err) {
             console.log(err.message)
         }
